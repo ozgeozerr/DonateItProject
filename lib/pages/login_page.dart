@@ -1,34 +1,60 @@
+// lib/screens/login_page.dart
+import 'package:donate_it/pages/next_page.dart';
 import 'package:flutter/material.dart';
 import 'package:donate_it/components/my_button.dart';
 import 'package:donate_it/components/my_textfield.dart';
 import 'package:donate_it/components/square_tile.dart';
 
 class LoginPage extends StatelessWidget {
-  LoginPage({super.key});
+  LoginPage({Key? key});
 
-  // text editing controllers
+
   final usernameController = TextEditingController();
   final passwordController = TextEditingController();
 
-  // sign user in method
-  void signUserIn() {}
+  // sign-in
+  void signUserIn(BuildContext context) {
+    // Authentication logic = backend
+    // this is just a sample to keep the project going!
+    if (usernameController.text == 'demo' && passwordController.text == 'password') {
+      // Navigate to the next page if login is successful
+      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NextPage()));
+    } else {
+
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text('Login Failed'),
+          content: Text('Invalid username or password.'),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              child: Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[300],
       body: SafeArea(
-        child: SingleChildScrollView( // Wrap the Column with SingleChildScrollView
+        child: SingleChildScrollView(
           child: Center(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 50),
+                SizedBox(height: 50),
                 const Icon(
                   Icons.lock,
                   size: 100,
                 ),
-                const SizedBox(height: 50),
+                SizedBox(height: 50),
                 Text(
                   'Welcome back you\'ve been missed!',
                   style: TextStyle(
@@ -36,19 +62,19 @@ class LoginPage extends StatelessWidget {
                     fontSize: 16,
                   ),
                 ),
-                const SizedBox(height: 25),
+                SizedBox(height: 25),
                 MyTextField(
                   controller: usernameController,
                   hintText: 'Username',
                   obscureText: false,
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10),
                 MyTextField(
                   controller: passwordController,
                   hintText: 'Password',
                   obscureText: true,
                 ),
-                const SizedBox(height: 10),
+                SizedBox(height: 10),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -61,11 +87,11 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 25),
+                SizedBox(height: 25),
                 MyButton(
-                  onTap: signUserIn,
+                  onTap: () => signUserIn(context),
                 ),
-                const SizedBox(height: 50),
+                SizedBox(height: 50),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 25.0),
                   child: Row(
@@ -92,7 +118,7 @@ class LoginPage extends StatelessWidget {
                     ],
                   ),
                 ),
-                const SizedBox(height: 50),
+                SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: const [
@@ -101,7 +127,7 @@ class LoginPage extends StatelessWidget {
                     SquareTile(imagePath: 'lib/images/apple.png')
                   ],
                 ),
-                const SizedBox(height: 50),
+                SizedBox(height: 50),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -109,8 +135,8 @@ class LoginPage extends StatelessWidget {
                       'Not a member?',
                       style: TextStyle(color: Colors.grey[700]),
                     ),
-                    const SizedBox(width: 4),
-                    const Text(
+                    SizedBox(width: 4),
+                    Text(
                       'Register now',
                       style: TextStyle(
                         color: Colors.blue,
