@@ -1,6 +1,10 @@
 // lib/main.dart
 import 'package:flutter/material.dart';
 import 'screens/welcome_screen.dart';
+import 'pages/login_page.dart';
+import 'components/my_button.dart';
+import 'components/my_textfield.dart';
+import 'components/square_tile.dart';
 
 void main() {
   runApp(MyApp());

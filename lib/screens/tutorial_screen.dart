@@ -1,5 +1,6 @@
 // lib/screens/tutorial_screen.dart
 import 'package:flutter/material.dart';
+import 'package:donate_it/pages/login_page.dart'; // Import the login page
 
 class TutorialScreen extends StatelessWidget {
   @override
@@ -24,6 +25,17 @@ class TutorialScreen extends StatelessWidget {
             Text("Wait for us to approve the safety of the item."),
             SizedBox(height: 10),
             Text("Enjoy your discount coupon!"),
+            SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                // Navigate to the Login Page
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginPage()),
+                );
+              },
+              child: Text('Continue to Login'),
+            ),
           ],
         ),
       ),
