@@ -1,43 +1,195 @@
-// lib/screens/tutorial_screen.dart
+import 'package:donate_it/pages/login_page.dart';
 import 'package:flutter/material.dart';
-import 'package:donate_it/pages/login_page.dart'; // Import the login page
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:donate_it/pages/login_page.dart'; // Import your LoginScreen here
 
-class TutorialScreen extends StatelessWidget {
+class TutorialScreen extends StatefulWidget {
+  const TutorialScreen({Key? key}) : super(key: key);
+
+  @override
+  State<TutorialScreen> createState() => _TutorialScreenState();
+}
+
+class _TutorialScreenState extends State<TutorialScreen> {
+  late PageController _pageController;
+  int _pageIndex = 0;
+
+  @override
+  void initState() {
+    _pageController = PageController(initialPage: 0);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Tutorial'),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Donate It gives people in need a second hope."),
-            SizedBox(height: 10),
-            Text("First, check the most needed clothing items."),
-            SizedBox(height: 10),
-            Text("Click on the 'Start Donating' button."),
-            SizedBox(height: 10),
-            Text("Enter the information of the item."),
-            SizedBox(height: 10),
-            Text("Wait for us to approve the safety of the item."),
-            SizedBox(height: 10),
-            Text("Enjoy your discount coupon!"),
-            SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                // Navigate to the Login Page
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => LoginPage()),
-                );
-              },
-              child: Text('Continue to Login'),
-            ),
-          ],
+      body: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            children: [
+              Expanded(
+                child: PageView.builder(
+                  itemCount: demo_data.length,
+                  controller: _pageController,
+                  onPageChanged: (index) {
+                    setState(() {
+                      _pageIndex = index;
+                    });
+                  },
+                  itemBuilder: (context, index) => TutorialScreenContent(
+                    image: demo_data[index].image,
+                    title: demo_data[index].title,
+                    description: demo_data[index].description,
+                  ),
+                ),
+              ),
+              Row(
+                children: [
+                  ...List.generate(
+                    demo_data.length,
+                        (index) => Padding(
+                      padding: EdgeInsets.only(right: 4),
+                      child: DoIndicator(isActive: index == _pageIndex),
+                    ),
+                  ),
+                  const Spacer(),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (_pageIndex == demo_data.length - 1) {
+                        // If on the last page navigate to the login screen !!!
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => LoginPage()),
+                        );
+                      } else {
+
+                        _pageController.nextPage(
+                          curve: Curves.ease,
+                          duration: const Duration(milliseconds: 300),
+                        );
+                      }
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: const CircleBorder(),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: SvgPicture.asset(
+                        "lib/icons/arrow-right.svg",
+                        color: Colors.deepPurple,
+                        height: 36,
+                        width: 36,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
+      ),
+    );
+  }
+}
+
+class DoIndicator extends StatelessWidget {
+  const DoIndicator({
+    Key? key,
+    this.isActive = false,
+  }) : super(key: key);
+
+  final bool isActive;
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      height: isActive ? 12 : 4,
+      width: 4,
+      decoration: BoxDecoration(
+        color: isActive ? Colors.indigoAccent : Colors.indigoAccent.withOpacity(0.4),
+        borderRadius: const BorderRadius.all(Radius.circular(12)),
+      ),
+    );
+  }
+}
+
+class Tutorial {
+  final String image, title, description;
+
+  Tutorial({
+    required this.image,
+    required this.title,
+    required this.description,
+  });
+}
+
+final List<Tutorial> demo_data =  [
+  Tutorial(
+    image: "lib/images/security.png",
+    title: "First, Login to \nexplore DonateIt",
+    description: "If you are new, Sign in with your email or Google account!",
+  ),
+  Tutorial(
+    image: "lib/images/security.png",
+    title: "First, Login and \nexplore DonateIt",
+    description: "If you are new, Sign in with your email or Google account!",
+  ),
+  Tutorial(
+    image: "lib/images/security.png",
+    title: "First, Login and \nexplore DonateIt",
+    description: "If you are new, Sign in with your email or Google account!",
+  ),
+  Tutorial(
+    image: "lib/images/security.png",
+    title: "First, Login and \nexplore DonateIt",
+    description: "If you are new, Sign in with your email or Google account!",
+  ),
+];
+
+class TutorialScreenContent extends StatelessWidget {
+  const TutorialScreenContent({
+    Key? key,
+    required this.image,
+    required this.title,
+    required this.description,
+  }) : super(key: key);
+
+  final String image, title, description;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          const Spacer(),
+          Image.asset(
+            image,
+            height: 250,
+          ),
+          const Spacer(),
+          Text(
+            title,
+            textAlign: TextAlign.center,
+            style: Theme.of(context)
+                .textTheme
+                .headline5!
+                .copyWith(fontWeight: FontWeight.w500),
+          ),
+          const SizedBox(height: 16),
+          Text(
+            description,
+            textAlign: TextAlign.center,
+          ),
+          const Spacer(),
+        ],
       ),
     );
   }

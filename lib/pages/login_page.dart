@@ -16,7 +16,7 @@ class LoginPage extends StatelessWidget {
   void signUserIn(BuildContext context) {
     // Authentication logic = backend
     // this is just a sample to keep the project going!
-    if (usernameController.text == 'demo' && passwordController.text == 'password') {
+    if (usernameController.text == 'demo@gmail.com' && passwordController.text == 'password') {
       // Navigate to the next page if login is successful
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NextPage()));
     } else {
