@@ -1,7 +1,7 @@
 import 'package:donate_it/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:donate_it/pages/login_page.dart'; // Import your LoginScreen here
+import 'package:donate_it/pages/login_page.dart';
 
 class TutorialScreen extends StatefulWidget {
   const TutorialScreen({Key? key}) : super(key: key);
@@ -138,19 +138,29 @@ final List<Tutorial> demo_data =  [
     description: "If you are new, Sign in with your email or Google account!",
   ),
   Tutorial(
-    image: "lib/images/security.png",
-    title: "First, Login and \nexplore DonateIt",
-    description: "If you are new, Sign in with your email or Google account!",
+    image: "lib/images/newspaper.png",
+    title: "Keep yourself updated \non the news",
+    description: "Check the news to see what is most needed by children in need!",
   ),
   Tutorial(
-    image: "lib/images/security.png",
-    title: "First, Login and \nexplore DonateIt",
-    description: "If you are new, Sign in with your email or Google account!",
+    image: "lib/images/donate.png",
+    title: "Willing to help? \nSimply click on Donate button!",
+    description: "You will then be directed to the donation page and can choose which category you want to donate in.",
   ),
   Tutorial(
-    image: "lib/images/security.png",
-    title: "First, Login and \nexplore DonateIt",
-    description: "If you are new, Sign in with your email or Google account!",
+    image: "lib/images/donation.png",
+    title: "Did you choose what you are willing to donate? \nTake a picture of your item!",
+    description: "After taking your photo and submitting it, you will wait for confirmation",
+  ),
+  Tutorial(
+    image: "lib/images/post-office.png",
+    title: "Upon confirmation, you can now send your desired items",
+    description: "With the received cargo code, visit any nearby post office",
+  ),
+  Tutorial(
+    image: "lib/images/role-model.png",
+    title: "You are now a hero! \nAnd we have a surprise for you!",
+    description: "You will be benefited with discounts from our sponsors, Thank you for being a part of DonateIt :)",
   ),
 ];
 

@@ -1,4 +1,3 @@
-// lib/screens/welcome_screen.dart
 import 'package:flutter/material.dart';
 import 'tutorial_screen.dart';
 
@@ -20,9 +19,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
       duration: Duration(milliseconds: 500),
     );
 
-
     _opacityAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(_controller);
-
 
     _controller.forward();
   }
@@ -35,7 +32,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color(0xFF7F78A9), Colors.blue], // Gradient colors!!!
+            colors: [Color(0xFFB39CD0), Color(0xFF9FD7F1)],
           ),
         ),
         child: Center(
@@ -82,7 +79,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
                 opacity: _opacityAnimation,
                 child: ElevatedButton(
                   onPressed: () {
-                    // Navigate to the TutorialScreen
+                    // Navigate to TutorialScreen here!!!
                     Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => TutorialScreen()),
@@ -100,7 +97,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
                     style: TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF7F78A9),
+                      color: Color(0xFF8B67B0),
                     ),
                   ),
                 ),
