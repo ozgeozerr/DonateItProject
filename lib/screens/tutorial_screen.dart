@@ -1,7 +1,7 @@
 import 'package:donate_it/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:donate_it/pages/login_page.dart';
+
 
 class TutorialScreen extends StatefulWidget {
   const TutorialScreen({Key? key}) : super(key: key);
@@ -143,7 +143,7 @@ final List<Tutorial> demo_data =  [
     description: "Check the news to see what is most needed by children in need!",
   ),
   Tutorial(
-    image: "lib/images/donate.png",
+    image: "lib/images/sponsor.png",
     title: "Willing to help? \nSimply click on Donate button!",
     description: "You will then be directed to the donation page and can choose which category you want to donate in.",
   ),
