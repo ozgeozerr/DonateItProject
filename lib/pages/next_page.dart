@@ -38,8 +38,7 @@ class NextPage extends StatelessWidget {
       // BACKGROUND OF WHOLE PAGE
       backgroundColor: Colors.blue.shade800,
 
-
-     //NAVIGATION BAR
+      //NAVIGATION BAR
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.blue.shade200,
         color: Colors.purple.shade900,
@@ -48,15 +47,15 @@ class NextPage extends StatelessWidget {
           Icon(
             Icons.home,
             color: Colors.white,
-              ),
-      Icon(
-        Icons.favorite,
-        color: Colors.white,
+          ),
+          Icon(
+            Icons.favorite,
+            color: Colors.white,
           ),
           Icon(
             Icons.person,
             color: Colors.white,
-              ),
+          ),
         ],
       ),
       appBar: AppBar(
@@ -70,10 +69,12 @@ class NextPage extends StatelessWidget {
             fontFamily: 'Roboto', // Change text font family
           ),
         ),
-        backgroundColor: Colors.purple.shade900, // Change app bar color
+        backgroundColor:
+        Colors.purple.shade900, // Change app bar color
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(5), // Change app bar shape
+            bottom: Radius.circular(
+                5), // Change app bar shape
           ),
         ),
         toolbarHeight: 45,
@@ -82,7 +83,10 @@ class NextPage extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Colors.purple.shade900, Colors.blue.shade200],
+            colors: [
+              Colors.purple.shade900,
+              Colors.blue.shade200
+            ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
@@ -93,10 +97,12 @@ class NextPage extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Colors.purple.shade900.withOpacity(0.5), // Change border color as needed
+                  color: Colors.purple.shade900
+                      .withOpacity(0.5), // Change border color as needed
                   width: 10, // Change border width as needed
                 ),
-                borderRadius: BorderRadius.circular(50), // Change border radius as needed
+                borderRadius: BorderRadius.circular(
+                    50), // Change border radius as needed
               ),
               child: CarouselSlider(
                 options: CarouselOptions(
@@ -106,7 +112,8 @@ class NextPage extends StatelessWidget {
                   aspectRatio: 16 / 9,
                   autoPlayCurve: Curves.fastOutSlowIn,
                   enableInfiniteScroll: true,
-                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  autoPlayAnimationDuration:
+                  Duration(milliseconds: 800),
                   viewportFraction: 0.8,
                 ),
                 items: [
@@ -117,8 +124,11 @@ class NextPage extends StatelessWidget {
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(
-                        width: MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.symmetric(horizontal: 1.0), // FOR SCALING THE SLIDING PICTURES
+                        width:
+                        MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(
+                            horizontal:
+                            1.0), // FOR SCALING THE SLIDING PICTURES
                         decoration: BoxDecoration(
                           color: Colors.grey,
                         ),
@@ -133,95 +143,115 @@ class NextPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 13),
-            GridView.count(
-              crossAxisCount: 2,
-              shrinkWrap: true,
-              physics: NeverScrollableScrollPhysics(),
-              children: List.generate(boxData.length, (index) {
-                return GestureDetector(
-                  onTap: () {
-                    // Navigate to a different scene when box is clicked
-                    switch (index) {
-                    // FAQ
-                      case 0:
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => Faq(),
-                        ));
-                        break;
-                    // ORGANIZATION
-                      case 1:
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => Organization(),
-                        ));
-                        break;
-                    // SPONSORS
-                      case 2:
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => MeetSponsors(),
-                        ));
-                        break;
-                    // GETHELP
-                      case 3:
-                        Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => HelpCenter(),
-                        ));
-                        break;
-                      default:
-                        break;
-                    }
-                  },
-                  child: Container(
-                    margin: EdgeInsets.all(35),
-                    decoration: BoxDecoration(
-                      border: Border.all(
-                        color: Colors.blue.shade700,
-                        width: 1,
+            Expanded(
+              child: GridView.count(
+                crossAxisCount: 2,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                children: List.generate(boxData.length, (index) {
+                  return GestureDetector(
+                    onTap: () {
+                      // Navigate to a different scene when box is clicked
+                      switch (index) {
+                      // FAQ
+                        case 0:
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => Faq(),
+                            ),
+                          );
+                          break;
+                      // ORGANIZATION
+                        case 1:
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => Organization(),
+                            ),
+                          );
+                          break;
+                      // SPONSORS
+                        case 2:
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => MeetSponsors(),
+                            ),
+                          );
+                          break;
+                      // GETHELP
+                        case 3:
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => HelpCenter(),
+                            ),
+                          );
+                          break;
+                        default:
+                          break;
+                      }
+                    },
+                    child: Container(
+                      margin: EdgeInsets.all(35),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.blue.shade700,
+                          width: 1,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(
-                          boxData[index]['image'],
-                          fit: BoxFit.cover,
-                          height: 90,
-                          width: 90,
-                        ),
-                        SizedBox(height: 5), // Add space between image and text
-                        Text(
-                          boxData[index]['text'], // Display text corresponding to the box
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 19,
-                            fontWeight: FontWeight.bold,
+                      child: Column(
+                        mainAxisAlignment:
+                        MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            boxData[index]['image'],
+                            fit: BoxFit.cover,
+                            height: 90,
+                            width: 90,
                           ),
-                        ),
-                      ],
+                          SizedBox(
+                              height:
+                              5), // Add space between image and text
+                          Text(
+                            boxData[index]['text'], // Display text corresponding to the box
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 19,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                  ),
-                );
-              }),
+                  );
+                }),
+              ),
             ),
             SizedBox(height: 5), // Add some spacing between the GridView and the button
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) => StartDonatingNext(), // Replace StartDonatingNext with the appropriate class name
+                  builder: (context) =>
+                      StartDonatingNext(), // Replace StartDonatingNext with the appropriate class name
                 ));
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.purple.shade900, // Change the button color here
-                onPrimary: Colors.white, // Change the text color here
-                fixedSize: Size(200, 55), // Change the size of the button here (width, height)
+                primary: Colors.purple
+                    .shade900, // Change the button color here
+                onPrimary: Colors
+                    .white, // Change the text color here
+                fixedSize: Size(
+                    200,
+                    55), // Change the size of the button here (width, height)
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30), // Change the shape of the button here
+                  borderRadius: BorderRadius.circular(
+                      30), // Change the shape of the button here
                 ),
               ),
               child: Text(
                 'Donate Now!',
                 style: TextStyle(
-                  fontSize: 23, // Change the font size here
+                  fontSize:
+                  23, // Change the font size here
                 ),
               ),
             ),
@@ -273,6 +303,7 @@ class MeetSponsors extends StatelessWidget {
     );
   }
 }
+
 class HelpCenter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

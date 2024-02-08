@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "632668123205",
+    "project_id": "donateitauth",
+    "storage_bucket": "donateitauth.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632668123205:android:f62a1d0f19fe00220f332c",
+        "android_client_info": {
+          "package_name": "com.example.android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUQDPBY4qMOJv5rd4oQyxVCIhp4bK2cRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:632668123205:android:cc8483c2d0d2872f0f332c",
+        "android_client_info": {
+          "package_name": "com.example.donate_it"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUQDPBY4qMOJv5rd4oQyxVCIhp4bK2cRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,7 +1,6 @@
-import 'package:donate_it/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
+import 'package:donate_it/pages/login_page.dart';
 
 class TutorialScreen extends StatefulWidget {
   const TutorialScreen({Key? key}) : super(key: key);
@@ -63,13 +62,12 @@ class _TutorialScreenState extends State<TutorialScreen> {
                   ElevatedButton(
                     onPressed: () {
                       if (_pageIndex == demo_data.length - 1) {
-                        // If on the last page navigate to the login screen !!!
+                        // If on the last page navigate to the login screen
                         Navigator.pushReplacement(
                           context,
-                          MaterialPageRoute(builder: (context) => LoginPage()),
+                          MaterialPageRoute(builder: (context) => LoginPage(onTap: null)),
                         );
                       } else {
-
                         _pageController.nextPage(
                           curve: Curves.ease,
                           duration: const Duration(milliseconds: 300),
