@@ -1,3 +1,4 @@
+import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:donate_it/pages/help_center.dart';
 import 'package:donate_it/pages/meet_sponsors.dart';
 import 'package:donate_it/pages/organization.dart';
@@ -11,22 +12,22 @@ class NextPage extends StatelessWidget {
   final List<Map<String, dynamic>> boxData = [
     {
       'image': 'lib/images/faq.png',
-      'text': '',
-      'details': 'Details of Box 1',
+      'text': 'FAQ',
+      'details': '',
     },
     {
       'image': 'lib/images/organization.png',
-      'text': '',
+      'text': 'Organization',
       'details': '',
     },
     {
       'image': 'lib/images/sponsor.png',
-      'text': '',
+      'text': 'Our Sponsors',
       'details': '',
     },
     {
       'image': 'lib/images/customer-service.png',
-      'text': '',
+      'text': 'Need Help?',
       'details': '',
     },
   ];
@@ -34,129 +35,198 @@ class NextPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Donate It'),
-      ),
-      body: Column(
-        children: <Widget>[
-          CarouselSlider(
-            options: CarouselOptions(
-              height: 220.0,
-              enlargeCenterPage: true,
-              autoPlay: true,
-              aspectRatio: 16 / 9,
-              autoPlayCurve: Curves.fastOutSlowIn,
-              enableInfiniteScroll: true,
-              autoPlayAnimationDuration: Duration(milliseconds: 800),
-              viewportFraction: 0.8,
-            ),
-            items: [
-              'lib/images/help_children.jpg',
-              'lib/images/logo_donate.jpeg',
-              'lib/images/stock_donation_photo.jpg',
-            ].map((item) {
-              return Builder(
-                builder: (BuildContext context) {
-                  return Container(
-                    width: MediaQuery.of(context).size.width,
-                    margin: EdgeInsets.symmetric(horizontal: 90.0),
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                    ),
-                    child: Image.asset(
-                      item,
-                      fit: BoxFit.cover,
-                    ),
-                  );
-                },
-              );
-            }).toList(),
-          ),
-          SizedBox(height: 25),
-          GridView.count(
-            crossAxisCount: 2,
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            children: List.generate(boxData.length, (index) {
-              return GestureDetector(
-                onTap: () {
-                  // Navigate to a different scene when box is clicked
-                  switch (index) {
-                  // FAQ
-                    case 0:
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => Faq(),
-                      ));
-                      break;
-                  // ORGANIZATION
-                    case 1:
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => Organization(),
-                      ));
-                      break;
-                  // SPONSORS
-                    case 2:
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => MeetSponsors(),
-                      ));
-                      break;
-                  // GETHELP
-                    case 3:
-                      Navigator.of(context).push(MaterialPageRoute(
-                        builder: (context) => HelpCenter(),
-                      ));
-                      break;
-                    default:
-                      break;
-                  }
-                },
-                child: Container(
-                  margin: EdgeInsets.all(45),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    image: DecorationImage(
-                      image: AssetImage(boxData[index]['image']),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      boxData[index]['text'],
-                      style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ),
-              );
-            }),
-          ),
-          SizedBox(height: 15), // Add some spacing between the GridView and the button
-          ElevatedButton(
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(
-                builder: (context) => StartDonatingNext(), // Replace StartDonatingNext with the appropriate class name
-              ));
-            },
-            style: ElevatedButton.styleFrom(
-              primary: Colors.purple, // Change the button color here
-              onPrimary: Colors.white, // Change the text color here
-              fixedSize: Size(300, 60), // Change the size of the button here (width, height)
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20), // Change the shape of the button here
-              ),
-            ),
-            child: Text(
-              'Start Donating Now!',
-              style: TextStyle(
-                fontSize: 23, // Change the font size here
-              ),
-            ),
-          ),
+      // BACKGROUND OF WHOLE PAGE
+      backgroundColor: Colors.blue.shade800,
 
+
+     //NAVIGATION BAR
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.blue.shade200,
+        color: Colors.purple.shade900,
+        animationDuration: Duration(milliseconds: 300),
+        items: [
+          Icon(
+            Icons.home,
+            color: Colors.white,
+              ),
+      Icon(
+        Icons.favorite,
+        color: Colors.white,
+          ),
+          Icon(
+            Icons.person,
+            color: Colors.white,
+              ),
         ],
+      ),
+      appBar: AppBar(
+        title: Text(
+          'Donate It',
+          style: TextStyle(
+            color: Colors.white, // Change text color
+            fontSize: 25, // Change text font size
+            fontWeight: FontWeight.w700, // Change text font weight
+            fontStyle: FontStyle.normal, // Change text font style
+            fontFamily: 'Roboto', // Change text font family
+          ),
+        ),
+        backgroundColor: Colors.purple.shade900, // Change app bar color
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(5), // Change app bar shape
+          ),
+        ),
+        toolbarHeight: 45,
+      ),
+
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.purple.shade900, Colors.blue.shade200],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Column(
+          children: <Widget>[
+            SizedBox(height: 25),
+            Container(
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Colors.purple.shade100, // Change border color as needed
+                  width: 6, // Change border width as needed
+                ),
+                borderRadius: BorderRadius.circular(50), // Change border radius as needed
+              ),
+              child: CarouselSlider(
+                options: CarouselOptions(
+                  height: 185.0,
+                  enlargeCenterPage: true,
+                  autoPlay: true,
+                  aspectRatio: 16 / 9,
+                  autoPlayCurve: Curves.fastOutSlowIn,
+                  enableInfiniteScroll: true,
+                  autoPlayAnimationDuration: Duration(milliseconds: 800),
+                  viewportFraction: 0.8,
+                ),
+                items: [
+                  'lib/images/slide1.jpg',
+                  'lib/images/slide1.jpg',
+                  'lib/images/slide3.jpg',
+                ].map((item) {
+                  return Builder(
+                    builder: (BuildContext context) {
+                      return Container(
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(horizontal: 1.0), // FOR SCALING THE SLIDING PICTURES
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                        ),
+                        child: Image.asset(
+                          item,
+                          fit: BoxFit.cover,
+                        ),
+                      );
+                    },
+                  );
+                }).toList(),
+              ),
+            ),
+            SizedBox(height: 13),
+            GridView.count(
+              crossAxisCount: 2,
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              children: List.generate(boxData.length, (index) {
+                return GestureDetector(
+                  onTap: () {
+                    // Navigate to a different scene when box is clicked
+                    switch (index) {
+                    // FAQ
+                      case 0:
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Faq(),
+                        ));
+                        break;
+                    // ORGANIZATION
+                      case 1:
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => Organization(),
+                        ));
+                        break;
+                    // SPONSORS
+                      case 2:
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => MeetSponsors(),
+                        ));
+                        break;
+                    // GETHELP
+                      case 3:
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => HelpCenter(),
+                        ));
+                        break;
+                      default:
+                        break;
+                    }
+                  },
+                  child: Container(
+                    margin: EdgeInsets.all(35),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.blue.shade700,
+                        width: 1,
+                      ),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset(
+                          boxData[index]['image'],
+                          fit: BoxFit.cover,
+                          height: 90,
+                          width: 90,
+                        ),
+                        SizedBox(height: 5), // Add space between image and text
+                        Text(
+                          boxData[index]['text'], // Display text corresponding to the box
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 19,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                );
+              }),
+            ),
+            SizedBox(height: 5), // Add some spacing between the GridView and the button
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => StartDonatingNext(), // Replace StartDonatingNext with the appropriate class name
+                ));
+              },
+              style: ElevatedButton.styleFrom(
+                primary: Colors.purple.shade900, // Change the button color here
+                onPrimary: Colors.white, // Change the text color here
+                fixedSize: Size(200, 55), // Change the size of the button here (width, height)
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(30), // Change the shape of the button here
+                ),
+              ),
+              child: Text(
+                'Donate Now!',
+                style: TextStyle(
+                  fontSize: 23, // Change the font size here
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -203,7 +273,6 @@ class MeetSponsors extends StatelessWidget {
     );
   }
 }
-
 class HelpCenter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
