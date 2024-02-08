@@ -93,8 +93,8 @@ class NextPage extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Colors.purple.shade100, // Change border color as needed
-                  width: 6, // Change border width as needed
+                  color: Colors.purple.shade900.withOpacity(0.5), // Change border color as needed
+                  width: 10, // Change border width as needed
                 ),
                 borderRadius: BorderRadius.circular(50), // Change border radius as needed
               ),
@@ -111,7 +111,7 @@ class NextPage extends StatelessWidget {
                 ),
                 items: [
                   'lib/images/slide1.jpg',
-                  'lib/images/slide1.jpg',
+                  'lib/images/slide2.jpg',
                   'lib/images/slide3.jpg',
                 ].map((item) {
                   return Builder(
