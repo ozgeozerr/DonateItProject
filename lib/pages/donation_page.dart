@@ -78,7 +78,7 @@ class _DonationPageState extends State<DonationPage> {
                                   '\n6. Changed your mind? You can cancel the process at any time.\n'
                                   '\n7. Once items are received by cargo, do not forget to change your coupons!',
                               style: TextStyle(
-                                fontSize: 15.5,
+                                fontSize: 15.0,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
