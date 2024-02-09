@@ -2,10 +2,12 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:donate_it/pages/help_center.dart';
 import 'package:donate_it/pages/meet_sponsors.dart';
 import 'package:donate_it/pages/organization.dart';
+import 'package:donate_it/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:donate_it/pages/faq.dart';
 
+import 'donation_page.dart';
 import 'start_donating_next.dart';
 
 class NextPage extends StatelessWidget {
@@ -41,7 +43,7 @@ class NextPage extends StatelessWidget {
       //NAVIGATION BAR
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.blue.shade200,
-        color: Colors.purple.shade900,
+        color: Colors.deepPurple.shade600,
         animationDuration: Duration(milliseconds: 300),
         items: [
           Icon(
@@ -57,7 +59,26 @@ class NextPage extends StatelessWidget {
             color: Colors.white,
           ),
         ],
+        onTap: (index) {
+          // Navigate to the corresponding page based on the index
+          switch (index) {
+            case 0:
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NextPage()));
+              break;
+            case 1:
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => DonationPage()));
+              break;
+            case 2:
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+              break;
+            default:
+              break;
+          }
+        },
       ),
+
+
+
       appBar: AppBar(
         title: Text(
           'Donate It',
@@ -70,7 +91,7 @@ class NextPage extends StatelessWidget {
           ),
         ),
         backgroundColor:
-        Colors.purple.shade900, // Change app bar color
+        Colors.deepPurple.shade600, // Change app bar color
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(
@@ -84,7 +105,7 @@ class NextPage extends StatelessWidget {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             colors: [
-              Colors.purple.shade900,
+              Colors.deepPurple.shade600,
               Colors.blue.shade200
             ],
             begin: Alignment.topCenter,
@@ -97,7 +118,7 @@ class NextPage extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Colors.purple.shade900
+                  color: Colors.deepPurple.shade600
                       .withOpacity(0.5), // Change border color as needed
                   width: 10, // Change border width as needed
                 ),
@@ -193,7 +214,7 @@ class NextPage extends StatelessWidget {
                       margin: EdgeInsets.all(35),
                       decoration: BoxDecoration(
                         border: Border.all(
-                          color: Colors.blue.shade700,
+                          color: Colors.blue.shade600,
                           width: 1,
                         ),
                         borderRadius: BorderRadius.circular(10),
@@ -231,12 +252,12 @@ class NextPage extends StatelessWidget {
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) =>
-                      StartDonatingNext(), // Replace StartDonatingNext with the appropriate class name
+                      DonationPage(), // Replace StartDonatingNext with the appropriate class name
                 ));
               },
               style: ElevatedButton.styleFrom(
-                primary: Colors.purple
-                    .shade900, // Change the button color here
+                primary: Colors.deepPurple
+                    .shade600, // Change the button color here
                 onPrimary: Colors
                     .white, // Change the text color here
                 fixedSize: Size(
