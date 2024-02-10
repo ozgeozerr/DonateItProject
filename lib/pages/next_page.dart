@@ -60,7 +60,7 @@ class NextPage extends StatelessWidget {
           ),
         ],
         onTap: (index) {
-          // Navigate to the corresponding page based on the index
+
           switch (index) {
             case 0:
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NextPage()));
@@ -83,19 +83,19 @@ class NextPage extends StatelessWidget {
         title: Text(
           'Donate It',
           style: TextStyle(
-            color: Colors.white, // Change text color
-            fontSize: 25, // Change text font size
-            fontWeight: FontWeight.w700, // Change text font weight
-            fontStyle: FontStyle.normal, // Change text font style
-            fontFamily: 'Roboto', // Change text font family
+            color: Colors.white,
+            fontSize: 25,
+            fontWeight: FontWeight.w700,
+            fontStyle: FontStyle.normal,
+            fontFamily: 'Roboto',
           ),
         ),
         backgroundColor:
-        Colors.deepPurple.shade600, // Change app bar color
+        Colors.deepPurple.shade600,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(
-                5), // Change app bar shape
+                5),
           ),
         ),
         toolbarHeight: 45,
@@ -119,11 +119,11 @@ class NextPage extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border.all(
                   color: Colors.deepPurple.shade600
-                      .withOpacity(0.5), // Change border color as needed
-                  width: 10, // Change border width as needed
+                      .withOpacity(0.5),
+                  width: 10,
                 ),
                 borderRadius: BorderRadius.circular(
-                    50), // Change border radius as needed
+                    50),
               ),
               child: CarouselSlider(
                 options: CarouselOptions(
@@ -172,7 +172,7 @@ class NextPage extends StatelessWidget {
                 children: List.generate(boxData.length, (index) {
                   return GestureDetector(
                     onTap: () {
-                      // Navigate to a different scene when box is clicked
+
                       switch (index) {
                       // FAQ
                         case 0:
@@ -231,9 +231,9 @@ class NextPage extends StatelessWidget {
                           ),
                           SizedBox(
                               height:
-                              5), // Add space between image and text
+                              5),
                           Text(
-                            boxData[index]['text'], // Display text corresponding to the box
+                            boxData[index]['text'],
                             style: TextStyle(
                               color: Colors.white,
                               fontSize: 19,
@@ -247,32 +247,32 @@ class NextPage extends StatelessWidget {
                 }),
               ),
             ),
-            SizedBox(height: 5), // Add some spacing between the GridView and the button
+            SizedBox(height: 5),
             ElevatedButton(
               onPressed: () {
                 Navigator.of(context).push(MaterialPageRoute(
                   builder: (context) =>
-                      DonationPage(), // Replace StartDonatingNext with the appropriate class name
+                      DonationPage(),
                 ));
               },
               style: ElevatedButton.styleFrom(
                 primary: Colors.deepPurple
-                    .shade600, // Change the button color here
+                    .shade600,
                 onPrimary: Colors
-                    .white, // Change the text color here
+                    .white,
                 fixedSize: Size(
                     200,
-                    55), // Change the size of the button here (width, height)
+                    55),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(
-                      30), // Change the shape of the button here
+                      30),
                 ),
               ),
               child: Text(
                 'Donate Now!',
                 style: TextStyle(
                   fontSize:
-                  23, // Change the font size here
+                  23,
                 ),
               ),
             ),

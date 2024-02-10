@@ -27,23 +27,23 @@ class _DonationPageState extends State<DonationPage> {
           title: Text(
             'Donation',
             style: TextStyle(
-              color: Colors.white, // Change text color
-              fontSize: 25, // Change text font size
-              fontWeight: FontWeight.w700, // Change text font weight
-              fontStyle: FontStyle.normal, // Change text font style
-              fontFamily: 'Roboto', // Change text font family
+              color: Colors.white,
+              fontSize: 25,
+              fontWeight: FontWeight.w700,
+              fontStyle: FontStyle.normal,
+              fontFamily: 'Roboto',
             ),
           ),
-          backgroundColor: Colors.deepPurple.shade600, // Change app bar color
+          backgroundColor: Colors.deepPurple.shade600,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(
-                  5), // Change app bar shape
+                  5),
             ),
           ),
           toolbarHeight: 45,
         ),
-        backgroundColor: Colors.transparent, // Make scaffold background transparent
+        backgroundColor: Colors.transparent,
         body: SafeArea(
           child: Column(
             children: [
@@ -61,7 +61,7 @@ class _DonationPageState extends State<DonationPage> {
                             width: 2.0,
                           ),
                           borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.white, // Set box color to white
+                          color: Colors.white,
                         ),
                         width: MediaQuery.of(context).size.width - 40.0,
                         child: Column(
@@ -85,7 +85,7 @@ class _DonationPageState extends State<DonationPage> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 20), // Add space between text box and button
+                      SizedBox(height: 20),
                     ],
                   ),
                 ),
@@ -99,7 +99,7 @@ class _DonationPageState extends State<DonationPage> {
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) =>
-                              DonationProcessPage(), // Replace StartDonatingNext with the appropriate class name
+                              DonationProcessPage(),
                         ));
                       },
                       child: Padding(
