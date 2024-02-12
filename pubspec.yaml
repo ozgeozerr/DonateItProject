@@ -40,6 +40,9 @@ dependencies:
   carousel_slider: ^4.2.1
   google_sign_in: ^6.2.1
   curved_navigation_bar: ^1.0.3
+  cloud_firestore: ^4.15.4
+  firebase_storage: ^11.6.5
+  image_picker: ^1.0.7
 
 dev_dependencies:
   flutter_test:
