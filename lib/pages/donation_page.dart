@@ -14,37 +14,35 @@ class _DonationPageState extends State<DonationPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-          colors: [Colors.deepPurple.shade600, Colors.blue.shade200],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'Donation',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+            fontWeight: FontWeight.w600,
+            fontStyle: FontStyle.normal,
+            fontFamily: 'Roboto',
+          ),
         ),
+        backgroundColor: Colors.deepPurple.shade600,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+
+          ),
+        ),
+        toolbarHeight: 40,
       ),
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            'Donation',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 25,
-              fontWeight: FontWeight.w700,
-              fontStyle: FontStyle.normal,
-              fontFamily: 'Roboto',
-            ),
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Colors.deepPurple.shade600, Colors.blue.shade200],
           ),
-          backgroundColor: Colors.deepPurple.shade600,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(
-                  5),
-            ),
-          ),
-          toolbarHeight: 45,
         ),
-        backgroundColor: Colors.transparent,
-        body: SafeArea(
+        child: SafeArea(
           child: Column(
             children: [
               Expanded(
@@ -54,21 +52,21 @@ class _DonationPageState extends State<DonationPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        padding: EdgeInsets.all(20.0),
+                        padding: EdgeInsets.all(10.0),
                         decoration: BoxDecoration(
                           border: Border.all(
                             color: Colors.deepPurple.shade600,
-                            width: 2.0,
+                            width: 4.0,
                           ),
                           borderRadius: BorderRadius.circular(10.0),
-                          color: Colors.white,
+                          color: Colors.deepPurple.shade100,
                         ),
                         width: MediaQuery.of(context).size.width - 40.0,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              '~ IMPORTANT NOTICE ~\n'
+                              '              ~ IMPORTANT NOTICE ~\n'
                                   '\n1. Decide what type of clothing you would like to donate and choose from the category!\n'
                                   '\n2. Take a photo of your piece of clothing.\n'
                                   '\n3. Agree to the terms and conditions.\n'
@@ -78,36 +76,36 @@ class _DonationPageState extends State<DonationPage> {
                                   '\n6. Changed your mind? You can cancel the process at any time.\n'
                                   '\n7. Once items are received by cargo, do not forget to change your coupons!',
                               style: TextStyle(
-                                fontSize: 15.0,
+                                fontSize: 17.0,
                                 fontWeight: FontWeight.bold,
+                                color: Colors.grey.shade900,
                               ),
                             ),
                           ],
                         ),
                       ),
-                      SizedBox(height: 20),
+                      SizedBox(height: 0),
                     ],
                   ),
                 ),
               ),
               SizedBox(
-                height: 145,
+                height: 90,
                 child: Center(
                   child: SizedBox(
-                    width: 200,
+                    width: 220,
                     child: ElevatedButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              DonationProcessPage(),
+                          builder: (context) => DonationProcessPage(),
                         ));
                       },
                       child: Padding(
-                        padding: const EdgeInsets.all(16.0),
+                        padding: const EdgeInsets.all(13.0),
                         child: Text(
-                          'Donate',
+                          'Donate Now',
                           style: TextStyle(
-                            fontSize: 30,
+                            fontSize: 25,
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                           ),
@@ -126,45 +124,45 @@ class _DonationPageState extends State<DonationPage> {
             ],
           ),
         ),
-        bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: Colors.blue.shade200,
-          color: Colors.deepPurple.shade600,
-          animationDuration: Duration(milliseconds: 300),
-          items: [
-            Icon(
-              Icons.home,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.favorite,
-              color: Colors.white,
-            ),
-            Icon(
-              Icons.person,
-              color: Colors.white,
-            ),
-          ],
-          onTap: (index) {
-            // navigation here!!
-            setState(() {
-              _currentIndex = index;
-            });
-            switch (index) {
-              case 0:
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NextPage()));
-                break;
-              case 1:
-              // don't navigate to donation if we're already on it!!
-                break;
-              case 2:
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfilePage()));
-                break;
-              default:
-                break;
-            }
-          },
-          index: _currentIndex,
-        ),
+      ),
+      bottomNavigationBar: CurvedNavigationBar(
+        backgroundColor: Colors.blue.shade200,
+        color: Colors.deepPurple.shade600, // Set navigation bar color to match the gradient
+        animationDuration: Duration(milliseconds: 300),
+        items: [
+          Icon(
+            Icons.home,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.favorite,
+            color: Colors.white,
+          ),
+          Icon(
+            Icons.person,
+            color: Colors.white,
+          ),
+        ],
+        onTap: (index) {
+          // navigation here!!
+          setState(() {
+            _currentIndex = index;
+          });
+          switch (index) {
+            case 0:
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NextPage()));
+              break;
+            case 1:
+            // don't navigate to donation if we're already on it!!
+              break;
+            case 2:
+              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ProfilePage()));
+              break;
+            default:
+              break;
+          }
+        },
+        index: _currentIndex,
       ),
     );
   }

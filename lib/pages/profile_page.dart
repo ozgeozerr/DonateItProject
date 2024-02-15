@@ -5,6 +5,7 @@ import 'package:donate_it/pages/my_coupons.dart';
 import 'package:donate_it/pages/my_profile_settings.dart';
 import 'package:donate_it/screens/welcome_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:donate_it/pages/next_page.dart';
 
 import 'donation_page.dart';
 import 'next_page.dart';
@@ -27,7 +28,7 @@ class ProfilePage extends StatelessWidget {
         backgroundColor: Colors.deepPurple.shade600,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
-            bottom: Radius.circular(5),
+
           ),
         ),
         toolbarHeight: 45,

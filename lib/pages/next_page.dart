@@ -8,7 +8,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:donate_it/pages/faq.dart';
 
 import 'donation_page.dart';
-import 'start_donating_next.dart';
+
 
 class NextPage extends StatelessWidget {
   final List<Map<String, dynamic>> boxData = [
@@ -81,11 +81,11 @@ class NextPage extends StatelessWidget {
 
       appBar: AppBar(
         title: Text(
-          'Donate It',
+          '           Donate It',
           style: TextStyle(
             color: Colors.white,
-            fontSize: 25,
-            fontWeight: FontWeight.w700,
+            fontSize: 24,
+            fontWeight: FontWeight.w500,
             fontStyle: FontStyle.normal,
             fontFamily: 'Roboto',
           ),
@@ -98,7 +98,7 @@ class NextPage extends StatelessWidget {
                 5),
           ),
         ),
-        toolbarHeight: 45,
+        toolbarHeight: 40,
       ),
 
       body: Container(
@@ -114,7 +114,7 @@ class NextPage extends StatelessWidget {
         ),
         child: Column(
           children: <Widget>[
-            SizedBox(height: 25),
+            SizedBox(height: 10),
             Container(
               decoration: BoxDecoration(
                 border: Border.all(
@@ -127,7 +127,7 @@ class NextPage extends StatelessWidget {
               ),
               child: CarouselSlider(
                 options: CarouselOptions(
-                  height: 185.0,
+                  height: 135.0,
                   enlargeCenterPage: true,
                   autoPlay: true,
                   aspectRatio: 16 / 9,
@@ -163,116 +163,121 @@ class NextPage extends StatelessWidget {
                 }).toList(),
               ),
             ),
-            SizedBox(height: 13),
-            Expanded(
-              child: GridView.count(
-                crossAxisCount: 2,
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                children: List.generate(boxData.length, (index) {
-                  return GestureDetector(
-                    onTap: () {
+            SizedBox(height: 1 ),
+            SizedBox(height: 370,
+              child: Expanded(
+                child: GridView.count(
+                  crossAxisCount: 2,
+                  shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                  children: List.generate(boxData.length, (index) {
+                    return GestureDetector(
+                      onTap: () {
 
-                      switch (index) {
-                      // FAQ
-                        case 0:
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => Faq(),
-                            ),
-                          );
-                          break;
-                      // ORGANIZATION
-                        case 1:
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => Organization(),
-                            ),
-                          );
-                          break;
-                      // SPONSORS
-                        case 2:
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => MeetSponsors(),
-                            ),
-                          );
-                          break;
-                      // GETHELP
-                        case 3:
-                          Navigator.of(context).push(
-                            MaterialPageRoute(
-                              builder: (context) => HelpCenter(),
-                            ),
-                          );
-                          break;
-                        default:
-                          break;
-                      }
-                    },
-                    child: Container(
-                      margin: EdgeInsets.all(35),
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Colors.blue.shade600,
-                          width: 1,
+                        switch (index) {
+                        // FAQ
+                          case 0:
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => Faq(),
+                              ),
+                            );
+                            break;
+                        // ORGANIZATION
+                          case 1:
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => Organization(),
+                              ),
+                            );
+                            break;
+                        // SPONSORS
+                          case 2:
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => MeetSponsors(),
+                              ),
+                            );
+                            break;
+                        // GETHELP
+                          case 3:
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                builder: (context) => HelpCenter(),
+                              ),
+                            );
+                            break;
+                          default:
+                            break;
+                        }
+                      },
+                      child: Container(
+                        margin: EdgeInsets.all(25),
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: Colors.deepPurple.shade400,
+                            width: 4,
+                          ),
+                          borderRadius: BorderRadius.circular(20),
                         ),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: Column(
-                        mainAxisAlignment:
-                        MainAxisAlignment.center,
-                        children: [
-                          Image.asset(
-                            boxData[index]['image'],
-                            fit: BoxFit.cover,
-                            height: 90,
-                            width: 90,
-                          ),
-                          SizedBox(
-                              height:
-                              5),
-                          Text(
-                            boxData[index]['text'],
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 19,
-                              fontWeight: FontWeight.bold,
+                        child: Column(
+                          mainAxisAlignment:
+                          MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              boxData[index]['image'],
+                              fit: BoxFit.cover,
+                              height: 90,
+                              width: 90,
                             ),
-                          ),
-                        ],
+                            SizedBox(
+                                height:
+                                5),
+                            Text(
+                              boxData[index]['text'],
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                }),
-              ),
-            ),
-            SizedBox(height: 5),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context) =>
-                      DonationPage(),
-                ));
-              },
-              style: ElevatedButton.styleFrom(
-                primary: Colors.deepPurple
-                    .shade600,
-                onPrimary: Colors
-                    .white,
-                fixedSize: Size(
-                    200,
-                    55),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(
-                      30),
+                    );
+                  }),
                 ),
               ),
-              child: Text(
-                'Donate Now!',
-                style: TextStyle(
-                  fontSize:
-                  23,
+            ),
+
+              SizedBox(height: 20),
+            SizedBox(height: 45,
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) =>
+                        DonationPage(),
+                  ));
+                },
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.deepPurple
+                      .shade600,
+                  onPrimary: Colors
+                      .white,
+                  fixedSize: Size(
+                      200,
+                      50),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                        30),
+                  ),
+                ),
+                child: Text(
+                  'Donate Now!',
+                  style: TextStyle(
+                    fontSize:
+                    23,
+                  ),
                 ),
               ),
             ),
@@ -283,58 +288,3 @@ class NextPage extends StatelessWidget {
   }
 }
 
-class Faq extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('FAQ'),
-      ),
-      body: Center(
-        child: Text('FAQ Screen'),
-      ),
-    );
-  }
-}
-
-class Organization extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Organization'),
-      ),
-      body: Center(
-        child: Text('Organization Screen'),
-      ),
-    );
-  }
-}
-
-class MeetSponsors extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Meet Sponsors'),
-      ),
-      body: Center(
-        child: Text('Meet Sponsors Screen'),
-      ),
-    );
-  }
-}
-
-class HelpCenter extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Help Center'),
-      ),
-      body: Center(
-        child: Text('Help Center Screen'),
-      ),
-    );
-  }
-}

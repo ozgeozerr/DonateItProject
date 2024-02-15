@@ -15,7 +15,6 @@ class _DonationProcessPageState extends State<DonationProcessPage> {
   String? imagePath;
   String? shippingCode;
 
-
   Future<void> _uploadImage() async {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
@@ -76,7 +75,6 @@ class _DonationProcessPageState extends State<DonationProcessPage> {
       ),
     );
 
-
     Navigator.pop(context, shippingCode);
   }
 
@@ -84,7 +82,17 @@ class _DonationProcessPageState extends State<DonationProcessPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Donation Process'),
+        title: Text('Donation Process',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+            fontWeight: FontWeight.w500,
+            fontStyle: FontStyle.normal,
+            fontFamily: 'Roboto',
+
+          ),
+        ),
+        backgroundColor: Colors.deepPurple.shade600,
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -92,8 +100,8 @@ class _DonationProcessPageState extends State<DonationProcessPage> {
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
             colors: [
-              Color(0xFFD9C9FF),
-              Color(0xFFB2E2E2),
+              Colors.deepPurple.shade600,
+              Colors.blue.shade200,
             ],
           ),
         ),
@@ -133,7 +141,6 @@ class _DonationProcessPageState extends State<DonationProcessPage> {
                 child: Text('Upload Clothing Picture'),
               ),
               SizedBox(height: 150),
-
               if (imagePath != null) Image.network(imagePath!),
               DropdownButtonFormField<String>(
                 value: selectedCargoBrand,
