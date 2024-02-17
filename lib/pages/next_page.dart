@@ -6,9 +6,9 @@ import 'package:donate_it/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:donate_it/pages/faq.dart';
+import 'package:http/http.dart';
 
 import 'donation_page.dart';
-
 
 class NextPage extends StatelessWidget {
   final List<Map<String, dynamic>> boxData = [
@@ -37,10 +37,7 @@ class NextPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // BACKGROUND OF WHOLE PAGE
       backgroundColor: Colors.blue.shade800,
-
-      //NAVIGATION BAR
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.blue.shade200,
         color: Colors.deepPurple.shade600,
@@ -60,7 +57,6 @@ class NextPage extends StatelessWidget {
           ),
         ],
         onTap: (index) {
-
           switch (index) {
             case 0:
               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => NextPage()));
@@ -76,9 +72,6 @@ class NextPage extends StatelessWidget {
           }
         },
       ),
-
-
-
       appBar: AppBar(
         title: Text(
           '           Donate It',
@@ -90,8 +83,7 @@ class NextPage extends StatelessWidget {
             fontFamily: 'Roboto',
           ),
         ),
-        backgroundColor:
-        Colors.deepPurple.shade600,
+        backgroundColor: Colors.deepPurple.shade600,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.vertical(
             bottom: Radius.circular(
@@ -100,7 +92,6 @@ class NextPage extends StatelessWidget {
         ),
         toolbarHeight: 40,
       ),
-
       body: Container(
         decoration: BoxDecoration(
           gradient: LinearGradient(
@@ -114,16 +105,14 @@ class NextPage extends StatelessWidget {
         ),
         child: Column(
           children: <Widget>[
-            SizedBox(height: 10),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
             Container(
               decoration: BoxDecoration(
                 border: Border.all(
-                  color: Colors.deepPurple.shade600
-                      .withOpacity(0.5),
+                  color: Colors.deepPurple.shade600.withOpacity(0.5),
                   width: 10,
                 ),
-                borderRadius: BorderRadius.circular(
-                    50),
+                borderRadius: BorderRadius.circular(50),
               ),
               child: CarouselSlider(
                 options: CarouselOptions(
@@ -133,8 +122,7 @@ class NextPage extends StatelessWidget {
                   aspectRatio: 16 / 9,
                   autoPlayCurve: Curves.fastOutSlowIn,
                   enableInfiniteScroll: true,
-                  autoPlayAnimationDuration:
-                  Duration(milliseconds: 800),
+                  autoPlayAnimationDuration: Duration(milliseconds: 800),
                   viewportFraction: 0.8,
                 ),
                 items: [
@@ -145,11 +133,8 @@ class NextPage extends StatelessWidget {
                   return Builder(
                     builder: (BuildContext context) {
                       return Container(
-                        width:
-                        MediaQuery.of(context).size.width,
-                        margin: EdgeInsets.symmetric(
-                            horizontal:
-                            1.0), // FOR SCALING THE SLIDING PICTURES
+                        width: MediaQuery.of(context).size.width,
+                        margin: EdgeInsets.symmetric(horizontal: 1.0),
                         decoration: BoxDecoration(
                           color: Colors.grey,
                         ),
@@ -163,120 +148,104 @@ class NextPage extends StatelessWidget {
                 }).toList(),
               ),
             ),
-            SizedBox(height: 1 ),
-            SizedBox(height: 370,
-              child: Expanded(
-                child: GridView.count(
-                  crossAxisCount: 2,
-                  shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
-                  children: List.generate(boxData.length, (index) {
-                    return GestureDetector(
-                      onTap: () {
-
-                        switch (index) {
-                        // FAQ
-                          case 0:
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => Faq(),
-                              ),
-                            );
-                            break;
-                        // ORGANIZATION
-                          case 1:
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => Organization(),
-                              ),
-                            );
-                            break;
-                        // SPONSORS
-                          case 2:
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => MeetSponsors(),
-                              ),
-                            );
-                            break;
-                        // GETHELP
-                          case 3:
-                            Navigator.of(context).push(
-                              MaterialPageRoute(
-                                builder: (context) => HelpCenter(),
-                              ),
-                            );
-                            break;
-                          default:
-                            break;
-                        }
-                      },
-                      child: Container(
-                        margin: EdgeInsets.all(25),
-                        decoration: BoxDecoration(
-                          border: Border.all(
-                            color: Colors.deepPurple.shade400,
-                            width: 4,
-                          ),
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        child: Column(
-                          mainAxisAlignment:
-                          MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              boxData[index]['image'],
-                              fit: BoxFit.cover,
-                              height: 90,
-                              width: 90,
+            SizedBox(height: 1),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.45,
+              child: GridView.count(
+                crossAxisCount: 2,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                children: List.generate(boxData.length, (index) {
+                  return GestureDetector(
+                    onTap: () {
+                      switch (index) {
+                        case 0:
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => Faq(),
                             ),
-                            SizedBox(
-                                height:
-                                5),
-                            Text(
-                              boxData[index]['text'],
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
+                          );
+                          break;
+                        case 1:
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => Organization(),
                             ),
-                          ],
+                          );
+                          break;
+                        case 2:
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => MeetSponsors(),
+                            ),
+                          );
+                          break;
+                        case 3:
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => HelpCenter(),
+                            ),
+                          );
+                          break;
+                        default:
+                          break;
+                      }
+                    },
+                    child: Container(
+                      margin: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          color: Colors.deepPurple.shade400,
+                          width: MediaQuery.of(context).size.width * 0.02,
                         ),
+                        borderRadius: BorderRadius.circular(20),
                       ),
-                    );
-                  }),
-                ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Image.asset(
+                            boxData[index]['image'],
+                            fit: BoxFit.cover,
+                            height: MediaQuery.of(context).size.height * 0.12,
+                            width: MediaQuery.of(context).size.height * 0.12,
+                          ),
+                          SizedBox(height: 5),
+                          Text(
+                            boxData[index]['text'],
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  );
+                }),
               ),
             ),
-
-              SizedBox(height: 20),
-            SizedBox(height: 45,
+            SizedBox(height: 20),
+            SizedBox(
+              height: 45,
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>
-                        DonationPage(),
+                    builder: (context) => DonationPage(),
                   ));
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Colors.deepPurple
-                      .shade600,
-                  onPrimary: Colors
-                      .white,
-                  fixedSize: Size(
-                      200,
-                      50),
+                  primary: Colors.deepPurple.shade600,
+                  onPrimary: Colors.white,
+                  fixedSize: Size(200, 50),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(
-                        30),
+                    borderRadius: BorderRadius.circular(30),
                   ),
                 ),
                 child: Text(
                   'Donate Now!',
                   style: TextStyle(
-                    fontSize:
-                    23,
+                    fontSize: 23,
                   ),
                 ),
               ),
@@ -287,4 +256,3 @@ class NextPage extends StatelessWidget {
     );
   }
 }
-

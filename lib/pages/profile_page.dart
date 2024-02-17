@@ -4,6 +4,7 @@ import 'package:donate_it/pages/login_page.dart';
 import 'package:donate_it/pages/my_coupons.dart';
 import 'package:donate_it/pages/my_profile_settings.dart';
 import 'package:donate_it/screens/welcome_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:donate_it/pages/next_page.dart';
 
@@ -11,8 +12,15 @@ import 'donation_page.dart';
 import 'next_page.dart';
 
 class ProfilePage extends StatelessWidget {
+
+
   @override
   Widget build(BuildContext context) {
+
+    User? user = FirebaseAuth.instance.currentUser;
+    String userId = user?.uid ?? "";
+
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -132,10 +140,9 @@ class ProfilePage extends StatelessWidget {
                           width: 140,
                           height: 100,
                           child: ProfileButton(
-                            label: 'My Donation History',
+                            label: 'Donation History',
                             onPressed: () {
-                              Navigator.pushReplacement(context, MaterialPageRoute(
-                                  builder: (context) => DonationHistory()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => DonationHistory(userId: userId)));
                             },
                           ),
                         ),
@@ -145,8 +152,7 @@ class ProfilePage extends StatelessWidget {
                           child: ProfileButton(
                             label: 'My Coupons',
                             onPressed: () {
-                              Navigator.pushReplacement(context, MaterialPageRoute(
-                                  builder: (context) => MyCoupons()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => MyCoupons()));
                             },
                           ),
                         ),
@@ -161,8 +167,7 @@ class ProfilePage extends StatelessWidget {
                           child: ProfileButton(
                             label: 'My Profile Settings',
                             onPressed: () {
-                              Navigator.pushReplacement(context, MaterialPageRoute(
-                                  builder: (context) => MyProfileSettings()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => MyProfileSettings()));
                             },
                           ),
                         ),

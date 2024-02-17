@@ -66,18 +66,18 @@ class _OrganizationState extends State<Organization> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              'About Donate It Organization', // New text added here
+                              'About Donate It Organization', // wadded here
                               style: TextStyle(
                                 fontSize: 21.0,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(height: 10), // Adjust this size according to your preference
+                            SizedBox(height: 10),
                             Text(
                               "At Donate It, we are driven by a profound commitment to making a positive difference in the lives of children in need. Our organization focuses on extending a helping hand to children facing poverty, adversity, and those affected by natural disasters such as earthquakes.",
                               style: TextStyle(
                                 fontSize: 16.0,
-                                // Adjust font size and other styles as needed
+
                               ),
                             ),
                             SizedBox(height: 20),
@@ -93,7 +93,7 @@ class _OrganizationState extends State<Organization> {
                               "We are dedicated to creating a brighter future for children by providing essential support and resources to improve their lives. Through our initiatives, we strive to offer hope, opportunity, and stability to those who need it most.",
                               style: TextStyle(
                                 fontSize: 16.0,
-                                // Adjust font size and other styles as needed
+
                               ),
                             ),
                             SizedBox(height: 20),
@@ -109,7 +109,7 @@ class _OrganizationState extends State<Organization> {
                               "Helping Children in Poverty: We work tirelessly to alleviate the hardships faced by children living in impoverished conditions. From providing access to education and healthcare to ensuring basic needs are met, we aim to break the cycle of poverty and empower children to reach their full potential.",
                               style: TextStyle(
                                 fontSize: 16.0,
-                                // Adjust font size and other styles as needed
+
                               ),
                             ),
                             SizedBox(height: 10),
@@ -117,7 +117,7 @@ class _OrganizationState extends State<Organization> {
                               "Supporting Disaster-Affected Children: In the aftermath of natural disasters like earthquakes, we swiftly mobilize to provide immediate relief and long-term assistance to affected children and their families. Our goal is to restore stability, rebuild communities, and offer hope amidst devastation.",
                               style: TextStyle(
                                 fontSize: 16.0,
-                                // Adjust font size and other styles as needed
+
                               ),
                             ),
                             SizedBox(height: 10),
@@ -125,7 +125,6 @@ class _OrganizationState extends State<Organization> {
                               "Fostering a Better World: Beyond addressing immediate needs, we are committed to creating sustainable change that fosters a better world for all children. By advocating for children's rights, promoting equality, and nurturing inclusive communities, we envision a future where every child can thrive and succeed.",
                               style: TextStyle(
                                 fontSize: 16.0,
-                                // Adjust font size and other styles as needed
                               ),
                             ),
                             SizedBox(height: 20),
@@ -141,7 +140,7 @@ class _OrganizationState extends State<Organization> {
                               "Together, we can make a meaningful impact and transform the lives of countless children. Whether through volunteering, donations, or spreading awareness, your support enables us to continue our vital mission of making the world a better place for children in need.",
                               style: TextStyle(
                                 fontSize: 16.0,
-                                // Adjust font size and other styles as needed
+
                               ),
                             ),
                             SizedBox(height: 10),
@@ -149,7 +148,7 @@ class _OrganizationState extends State<Organization> {
                               "At Donate It, every act of kindness, no matter how small, has the power to change lives and create a brighter tomorrow for generations to come. Join us in our journey to uplift, empower, and inspire hope in the hearts of children worldwide.",
                               style: TextStyle(
                                 fontSize: 16.0,
-                                // Adjust font size and other styles as needed
+
                               ),
                             ),
                           ],
@@ -166,7 +165,7 @@ class _OrganizationState extends State<Organization> {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.blue.shade200,
-        color: Colors.deepPurple.shade600, // Set navigation bar color to match the gradient
+        color: Colors.deepPurple.shade600,
         animationDuration: Duration(milliseconds: 300),
         items: [
           Icon(

@@ -103,7 +103,7 @@ class _DonationPageState extends State<DonationPage> {
                       child: Padding(
                         padding: const EdgeInsets.all(13.0),
                         child: Text(
-                          'Donate Now',
+                          'Donate',
                           style: TextStyle(
                             fontSize: 25,
                             fontWeight: FontWeight.bold,
@@ -127,7 +127,7 @@ class _DonationPageState extends State<DonationPage> {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.blue.shade200,
-        color: Colors.deepPurple.shade600, // Set navigation bar color to match the gradient
+        color: Colors.deepPurple.shade600,
         animationDuration: Duration(milliseconds: 300),
         items: [
           Icon(

@@ -90,7 +90,7 @@ class _MeetSponsorsState extends State<MeetSponsors> {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.blue.shade200,
-        color: Colors.deepPurple.shade600, // Set navigation bar color to match the gradient
+        color: Colors.deepPurple.shade600,
         animationDuration: Duration(milliseconds: 300),
         items: [
           Icon(

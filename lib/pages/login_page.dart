@@ -171,15 +171,15 @@ class _LoginPageState extends State<LoginPage> {
                             imagePath: 'lib/images/google.png'
                         ),
 
-                        SizedBox(width: 25),
+                        SizedBox(width: 5),
 
-                        SquareTile(
+                        /**SquareTile(
                           onTap: () {},
                             imagePath: 'lib/images/apple.png'
-                        ),
+                        ),**/
                       ],
                     ),
-                    SizedBox(height: 50),
+                    SizedBox(height: 45),
 
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,

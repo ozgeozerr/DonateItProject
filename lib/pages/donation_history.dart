@@ -1,44 +1,66 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-import '../services/donation_service.dart';
-
-
 class DonationHistory extends StatelessWidget {
-  final DonationService donationService = DonationService();
+  final String userId;
+
+  const DonationHistory({Key? key, required this.userId}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Donation History'),
+        title: Text(
+            'Donation History',
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 25,
+            fontWeight: FontWeight.w700,
+            fontStyle: FontStyle.normal,
+            fontFamily: 'Roboto',
+          ),
+        ),
+        backgroundColor: Color(0xFFD9C9FF),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(
+            bottom: Radius.circular(5),
+          ),
+        ),
+        toolbarHeight: 45,
       ),
-      body: StreamBuilder<List<Donation>>(
-        stream: donationService.getDonations(),
-        builder: (context, snapshot) {
-          if (snapshot.hasError) {
-            return Center(
-              child: Text('Error: ${snapshot.error}'),
-            );
-          }
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+            colors: [Color(0xFFD9C9FF), Color(0xFFB2E2E2)],
+          ),
+        ),
+        child: StreamBuilder<QuerySnapshot>(
+          stream: FirebaseFirestore.instance
+              .collection('donations')
+              .where('userId', isEqualTo: userId)
+              .snapshots(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
+            }
+            if (!snapshot.hasData || snapshot.data!.docs.isEmpty) {
+              return Center(child: Text('No donation history available.'));
+            }
+            return ListView.builder(
+              itemCount: snapshot.data!.docs.length,
+              itemBuilder: (context, index) {
+                final donationData = snapshot.data!.docs[index].data() as Map<String, dynamic>;
+                return ListTile(
+                  title: Text('Donation Date: ${donationData['donationDate']}'),
+                  subtitle: Text('Shipping Code: ${donationData['shippingCode']}'),
 
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: CircularProgressIndicator(),
+                );
+              },
             );
-          }
-
-          final donations = snapshot.data!;
-          return ListView.builder(
-            itemCount: donations.length,
-            itemBuilder: (context, index) {
-              final donation = donations[index];
-              return ListTile(
-                title: Text(donation.description),
-                subtitle: Text('Date: ${donation.timestamp}'),
-              );
-            },
-          );
-        },
+          },
+        ),
       ),
     );
   }
