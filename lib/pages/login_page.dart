@@ -106,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
               .height,
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFFB39CD0), Color(0xFF9FD7F1)],
+              colors: [Colors.deepPurple.shade600, Colors.blue.shade200],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
@@ -128,7 +128,8 @@ class _LoginPageState extends State<LoginPage> {
                       'Welcome back you\'ve been missed!',
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 19,
                       ),
                     ),
                     SizedBox(height: 25),

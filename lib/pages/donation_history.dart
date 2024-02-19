@@ -11,7 +11,7 @@ class DonationHistory extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-            'Donation History',
+          'Donation History',
           style: TextStyle(
             color: Colors.white,
             fontSize: 25,
@@ -52,10 +52,23 @@ class DonationHistory extends StatelessWidget {
               itemCount: snapshot.data!.docs.length,
               itemBuilder: (context, index) {
                 final donationData = snapshot.data!.docs[index].data() as Map<String, dynamic>;
+                final donationDate = donationData['donationDate'] ?? 'Unknown Date';
+                final shippingCode = donationData['shippingCode'] ?? 'No Shipping Code';
                 return ListTile(
-                  title: Text('Donation Date: ${donationData['donationDate']}'),
-                  subtitle: Text('Shipping Code: ${donationData['shippingCode']}'),
-
+                  title: Text(
+                    'Donation Date: $donationDate',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 16,
+                    ),
+                  ),
+                  subtitle: Text(
+                    'Shipping Code: $shippingCode',
+                    style: TextStyle(
+                      fontStyle: FontStyle.italic,
+                      fontSize: 14,
+                    ),
+                  ),
                 );
               },
             );

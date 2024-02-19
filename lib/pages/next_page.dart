@@ -74,7 +74,7 @@ class NextPage extends StatelessWidget {
       ),
       appBar: AppBar(
         title: Text(
-          '           Donate It',
+          '            Donate It',
           style: TextStyle(
             color: Colors.white,
             fontSize: 24,
@@ -90,7 +90,7 @@ class NextPage extends StatelessWidget {
                 5),
           ),
         ),
-        toolbarHeight: 40,
+        toolbarHeight: 35,
       ),
       body: Container(
         decoration: BoxDecoration(
@@ -105,30 +105,30 @@ class NextPage extends StatelessWidget {
         ),
         child: Column(
           children: <Widget>[
-            SizedBox(height: MediaQuery.of(context).size.height * 0.02),
+            SizedBox(height: MediaQuery.of(context).size.height * 0.001),
             Container(
               decoration: BoxDecoration(
                 border: Border.all(
                   color: Colors.deepPurple.shade600.withOpacity(0.5),
-                  width: 10,
+                  width: 2,
                 ),
-                borderRadius: BorderRadius.circular(50),
+                borderRadius: BorderRadius.circular(5),
               ),
               child: CarouselSlider(
                 options: CarouselOptions(
-                  height: 135.0,
+                  height: 150.0,
                   enlargeCenterPage: true,
                   autoPlay: true,
                   aspectRatio: 16 / 9,
                   autoPlayCurve: Curves.fastOutSlowIn,
                   enableInfiniteScroll: true,
                   autoPlayAnimationDuration: Duration(milliseconds: 800),
-                  viewportFraction: 0.8,
+                  viewportFraction: 1,
                 ),
                 items: [
-                  'lib/images/slide1.jpg',
-                  'lib/images/slide2.jpg',
-                  'lib/images/slide3.jpg',
+                  'lib/images/slide_first_news.png',
+                  'lib/images/slide_second.png',
+                  'lib/images/Screenshot 2024-02-18 170511.png',
                 ].map((item) {
                   return Builder(
                     builder: (BuildContext context) {
@@ -148,9 +148,9 @@ class NextPage extends StatelessWidget {
                 }).toList(),
               ),
             ),
-            SizedBox(height: 1),
+
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.45,
+              height: MediaQuery.of(context).size.height * 0.50,
               child: GridView.count(
                 crossAxisCount: 2,
                 shrinkWrap: true,
@@ -192,7 +192,7 @@ class NextPage extends StatelessWidget {
                       }
                     },
                     child: Container(
-                      margin: EdgeInsets.all(MediaQuery.of(context).size.width * 0.05),
+                      margin: EdgeInsets.all(MediaQuery.of(context).size.width * 0.06),
                       decoration: BoxDecoration(
                         border: Border.all(
                           color: Colors.deepPurple.shade400,
@@ -209,7 +209,7 @@ class NextPage extends StatelessWidget {
                             height: MediaQuery.of(context).size.height * 0.12,
                             width: MediaQuery.of(context).size.height * 0.12,
                           ),
-                          SizedBox(height: 5),
+                          SizedBox(height: 1),
                           Text(
                             boxData[index]['text'],
                             style: TextStyle(
@@ -225,9 +225,9 @@ class NextPage extends StatelessWidget {
                 }),
               ),
             ),
-            SizedBox(height: 20),
+            SizedBox(height: 15),
             SizedBox(
-              height: 45,
+              height: 55,
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(

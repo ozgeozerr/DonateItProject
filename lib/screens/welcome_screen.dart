@@ -32,7 +32,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
           gradient: LinearGradient(
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
-            colors: [Color(0xFFB39CD0), Color(0xFF9FD7F1)],
+            colors: [Colors.deepPurple.shade600 , Colors.blue.shade200],
           ),
         ),
         child: Center(
@@ -43,7 +43,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
               FadeTransition(
                 opacity: _opacityAnimation,
                 child: Text(
-                  'Welcome to DonateIt',
+                  'Welcome to Donate It',
                   style: TextStyle(
                     fontSize: 24.0,
                     fontWeight: FontWeight.bold,
@@ -97,7 +97,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> with TickerProviderStateM
                     style: TextStyle(
                       fontSize: 18.0,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF8B67B0),
+                      color: Colors.deepPurple.shade500,
                     ),
                   ),
                 ),

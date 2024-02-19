@@ -132,7 +132,7 @@ class Tutorial {
 final List<Tutorial> demo_data =  [
   Tutorial(
     image: "lib/images/security.png",
-    title: "First, Login to \nexplore DonateIt",
+    title: "First, Login to \nexplore Donate It",
     description: "If you are new, Sign in with your email or Google account!",
   ),
   Tutorial(

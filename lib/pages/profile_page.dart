@@ -62,7 +62,7 @@ class ProfilePage extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  'Hello, welcome back',
+                  'Hello, welcome back.',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 24,
