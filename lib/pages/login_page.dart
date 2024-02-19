@@ -47,16 +47,6 @@ class _LoginPageState extends State<LoginPage> {
       showErrorMessage(e.code);
 
 
-      /**if (e.code == 'user-not-found' || e.code == 'invalid-email') {
-          wrongEmailMessage();
-          } else if (e.code == 'wrong-password') {
-          wrongPasswordMessage();
-          } else {
-          print('Sign-in error: ${e.message}');
-          }
-          } catch (e) {
-          print('Sign-in error: $e');
-          }**/
     }
   }
 
@@ -76,25 +66,7 @@ class _LoginPageState extends State<LoginPage> {
         },
       );
     }
-    /**void wrongEmailMessage() {
 
-        showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-        title: Text('Incorrect Email!'),
-        ),
-        );
-        }
-
-        void wrongPasswordMessage() {
-
-        showDialog(
-        context: context,
-        builder: (context) => AlertDialog(
-        title: Text('Incorrect Password!'),
-        ),
-        );
-        }**/
 
     @override
     Widget build(BuildContext context) {
@@ -174,10 +146,6 @@ class _LoginPageState extends State<LoginPage> {
 
                         SizedBox(width: 5),
 
-                        /**SquareTile(
-                          onTap: () {},
-                            imagePath: 'lib/images/apple.png'
-                        ),**/
                       ],
                     ),
                     SizedBox(height: 45),

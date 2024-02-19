@@ -25,7 +25,7 @@ class ImageStoreMethods {
 
 
 
-  Future<String> uploadPost(String clothingCategory, Uint8List file) async {
+  Future<String> uploadPost(String clothingCategory,String cargoBrand, Uint8List file) async {
     String res = 'Some Error Occurred';
     try {
       String photoUrl = await imageToStorage(file);
@@ -35,7 +35,7 @@ class ImageStoreMethods {
         donationDate: DateTime.now(),
         imageURL: photoUrl,
         clothingCategory: clothingCategory,
-        cargoBrand: '',
+        cargoBrand: cargoBrand,
         shippingCode: '',
       );
       await _firestore.collection('donations').doc(donationId).set(post.toJson());

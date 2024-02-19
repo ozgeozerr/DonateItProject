@@ -75,6 +75,16 @@ class _DonationProcessPageState extends State<DonationProcessPage> {
   }
 
   void _handleSubmit() async {
+
+    showDialog(
+      context: context,
+      builder: (context) {
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+
     if (imagePath == null) {
       // Show error message if picture is not uploaded!!!
       ScaffoldMessenger.of(context).showSnackBar(
@@ -82,6 +92,7 @@ class _DonationProcessPageState extends State<DonationProcessPage> {
           content: Text('Please upload a picture of the clothing item.'),
         ),
       );
+      Navigator.pop(context);
       return;
     }
 
@@ -91,6 +102,7 @@ class _DonationProcessPageState extends State<DonationProcessPage> {
           content: Text('Please select a clothing category.'),
         ),
       );
+      Navigator.pop(context);
       return;
     }
 
@@ -100,12 +112,13 @@ class _DonationProcessPageState extends State<DonationProcessPage> {
           content: Text('Please select your desired cargo company.'),
         ),
       );
+      Navigator.pop(context);
       return;
     }
 
     try {
       final Uint8List fileBytes = await _downloadImage(imagePath!);
-      String uploadResult = await _imageStoreMethods.uploadPost(selectedClothingCategory, fileBytes);
+      String uploadResult = await _imageStoreMethods.uploadPost(selectedClothingCategory,selectedCargoBrand, fileBytes);
       if (this.mounted) {
         if (uploadResult == 'success') {
           final Random random = Random();
@@ -119,17 +132,23 @@ class _DonationProcessPageState extends State<DonationProcessPage> {
           );
 
           Navigator.pop(context, shippingCode);
+
+          Navigator.pop(context);
+
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text('Upload failed: $uploadResult'),
             ),
           );
+          Navigator.pop(context);
         }
       }
     } catch (err) {
       if (this.mounted) {
         print('Error uploading post: $err');
+        Navigator.pop(context);
+
       }
     }
 

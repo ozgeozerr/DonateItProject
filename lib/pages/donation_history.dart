@@ -62,14 +62,27 @@ class DonationHistory extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
-                  subtitle: Text(
-                    'Shipping Code: $shippingCode',
-                    style: TextStyle(
-                      fontStyle: FontStyle.italic,
-                      fontSize: 14,
-                    ),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Clothing Category: ${donationData['clothingCategory']}',
+                        style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontSize: 14,
+                        ),
+                      ),
+                      Text(
+                        'Shipping Code: $shippingCode',
+                        style: TextStyle(
+                          fontStyle: FontStyle.italic,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
                   ),
                 );
+
               },
             );
           },
